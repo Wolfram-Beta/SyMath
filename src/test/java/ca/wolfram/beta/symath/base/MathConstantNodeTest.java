@@ -1,6 +1,5 @@
 package ca.wolfram.beta.symath.base;
 
-import ca.wolfram.beta.symath.Expression;
 import ca.wolfram.beta.symath.MathNode;
 import ca.wolfram.beta.symath.NodeType;
 import org.junit.Before;
@@ -19,7 +18,6 @@ public class MathConstantNodeTest {
     @Before
     public void init() {
         pi = BaseNode.create("PI", Math.PI);
-
     }
 
     @Test
@@ -29,7 +27,7 @@ public class MathConstantNodeTest {
 
     @Test
     public void eval() {
-        assertEquals("PI should have the same value as Math.PI", Math.PI, pi.eval(Expression.getConstantMap()), 0.0001);
+        assertEquals("PI should have the same value as Math.PI", Math.PI, pi.eval(null), 0.0001);
     }
 
     @Test

@@ -21,6 +21,11 @@ public class BaseNode {
         return new MathConstantNode(s, value);
     }
 
+    public static MathNode create(String s, boolean isConstant) {
+        if (isConstant) return new MathConstantNode(s);
+        return new VariableNode(s);
+    }
+
     public static MathNode create(String s) {
         return new VariableNode(s);
     }

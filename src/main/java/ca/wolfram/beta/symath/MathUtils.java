@@ -11,7 +11,7 @@ public class MathUtils {
 
     public static boolean isInt(MathNode node) {
         if (!node.isConstant()) return false;
-        double eval = node.eval(Expression.getConstantMap());
+        double eval = node.eval(null);
         return eval == (int) eval;
     }
 

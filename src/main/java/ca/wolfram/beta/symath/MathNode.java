@@ -26,7 +26,7 @@ public interface MathNode {
     /**
      * Evaluates a given node and returns its result
      *
-     * @param variableMap VMap for variables & math constants
+     * @param map VMap for variables; null for constants
      * @return result as a double
      */
     double eval(VMap map);
