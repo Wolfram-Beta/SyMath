@@ -9,7 +9,7 @@ import java.util.Locale;
  */
 public class MathUtils {
 
-    public static boolean isInt(MathNode node) {
+    public static boolean isConstantInt(MathNode node) {
         if (!node.isConstant()) return false;
         double eval = node.eval(null);
         return eval == (int) eval;

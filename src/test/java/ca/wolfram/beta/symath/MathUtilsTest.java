@@ -13,9 +13,9 @@ public class MathUtilsTest {
 
     @Test
     public void isInt() {
-        assertTrue("3 is an int", MathUtils.isInt(BaseNode.create(3)));
-        assertTrue("2 is an int", MathUtils.isInt(BaseNode.create("a", 2)));
-        assertFalse("PI is not an int", MathUtils.isInt(BaseNode.create("PI", Math.PI)));
-        assertFalse("x is not an int", MathUtils.isInt(BaseNode.create("x")));
+        assertTrue("3 is an int", MathUtils.isConstantInt(BaseNode.create(3)));
+        assertTrue("2 is an int", MathUtils.isConstantInt(BaseNode.create("a", 2)));
+        assertFalse("PI is not an int", MathUtils.isConstantInt(BaseNode.create("PI", Math.PI)));
+        assertFalse("x is not an int", MathUtils.isConstantInt(BaseNode.create("x")));
     }
 }

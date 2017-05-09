@@ -41,7 +41,7 @@ public class AddNode extends OperationNode {
         final Iterator<MathNode> each = getChildren().iterator();
         while (each.hasNext()) {
             MathNode next = each.next();
-            if (!next.isConstant() || !MathUtils.isInt(next)) continue;
+            if (!next.isConstant() || !MathUtils.isConstantInt(next)) continue;
             each.remove();
             constant += next.eval(null);
         }
