@@ -13,12 +13,12 @@ public class VMap extends HashMap<String, Double> {
     }
 
     public double get(String key, double fallback) {
-        if (containsKey(key)) return get(key);
+        if (containsKey(key)) return super.get(key);
         return fallback;
     }
 
     public double get(String key, String errorMessage) {
-        if (containsKey(key)) return get(key);
+        if (containsKey(key)) return super.get(key);
         throw new IllegalArgumentException(errorMessage);
     }
 }
