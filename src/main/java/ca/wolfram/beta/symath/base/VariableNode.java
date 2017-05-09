@@ -36,7 +36,7 @@ public class VariableNode implements MathNode {
 
     @Override
     public double eval(VMap map) {
-        return map.get(variable, 0);
+        return map.get(variable, String.format("Error: %s has not yet been defined in the variable map", variable));
     }
 
     @Override
