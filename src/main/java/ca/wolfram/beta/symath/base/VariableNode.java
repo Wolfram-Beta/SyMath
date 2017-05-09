@@ -1,8 +1,8 @@
 package ca.wolfram.beta.symath.base;
 
-import ca.wolfram.beta.symath.Expression;
 import ca.wolfram.beta.symath.MathNode;
 import ca.wolfram.beta.symath.NodeType;
+import ca.wolfram.beta.symath.VMap;
 
 import java.util.List;
 
@@ -35,8 +35,8 @@ public class VariableNode implements MathNode {
     }
 
     @Override
-    public double eval(Expression.VMap variableMap) {
-        return variableMap.get(variable, 0);
+    public double eval(VMap map) {
+        return map.get(variable, 0);
     }
 
     @Override

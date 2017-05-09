@@ -1,8 +1,8 @@
 package ca.wolfram.beta.symath.operations;
 
-import ca.wolfram.beta.symath.Expression.VMap;
 import ca.wolfram.beta.symath.MathNode;
 import ca.wolfram.beta.symath.NodeType;
+import ca.wolfram.beta.symath.VMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,8 +29,8 @@ public class NegateNode extends OperationNode {
     }
 
     @Override
-    public double operationEval(VMap variableMap) {
-        return -getChildren().get(0).eval(variableMap);
+    public double operationEval(VMap map) {
+        return -getChildren().get(0).eval(map);
     }
 
     @Override

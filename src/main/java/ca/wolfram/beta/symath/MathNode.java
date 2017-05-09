@@ -29,7 +29,7 @@ public interface MathNode {
      * @param variableMap VMap for variables & math constants
      * @return result as a double
      */
-    double eval(Expression.VMap variableMap);
+    double eval(VMap map);
 
     /**
      * Simplifies node & its children

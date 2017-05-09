@@ -1,13 +1,18 @@
 package ca.wolfram.beta.symath.operations;
 
-import ca.wolfram.beta.symath.Expression;
-import ca.wolfram.beta.symath.MathNode;
-import ca.wolfram.beta.symath.NodeType;
+import ca.wolfram.beta.symath.*;
+import ca.wolfram.beta.symath.base.BaseNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Node that will sum all of its children
+ * <p>
+ * Given {@link #simplify()}, the constant integer values will always be last
+ */
 public class AddNode extends OperationNode {
 
     private AddNode(List<MathNode> children) {
@@ -29,16 +34,24 @@ public class AddNode extends OperationNode {
 
     @Override
     public boolean simplify() {
-        super.simplify();
-        //TODO add simplify
-        return false;
+        int constant = 0;
+        final Iterator<MathNode> each = getChildren().iterator();
+        while (each.hasNext()) {
+            MathNode next = each.next();
+            if (!next.isConstant() || !MathUtils.isInt(next)) continue;
+            each.remove();
+            constant += next.eval(Expression.getConstantMap());
+        }
+        MathNode newConstant = BaseNode.create(constant);
+        getChildren().add(newConstant);
+        return super.simplify();
     }
 
     @Override
-    public double operationEval(Expression.VMap variableMap) {
+    public double operationEval(VMap map) {
         return getChildren()
                 .stream()
-                .mapToDouble((n) -> n.eval(variableMap))
+                .mapToDouble((n) -> n.eval(map))
                 .sum();
     }
 

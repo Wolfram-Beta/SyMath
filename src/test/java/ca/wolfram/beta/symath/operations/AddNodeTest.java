@@ -13,7 +13,13 @@ public class AddNodeTest {
 
     @Test
     public void string() {
-        MathNode sum = AddNode.create(BaseNode.create(1), BaseNode.create("x"), BaseNode.create("y"));
-        assertEquals("Sum string should be concatenated values surrounded by brackets", "(1 + x + y)", sum.toString());
+        MathNode sum = AddNode.create(BaseNode.create("x"), BaseNode.create("y"),BaseNode.create(1));
+        assertEquals("Sum string should be concatenated values surrounded by brackets", "(x + y + 1)", sum.toString());
+    }
+
+    @Test
+    public void simplify() {
+        MathNode sum = AddNode.create(BaseNode.create(2), BaseNode.create("x"), BaseNode.create(3), BaseNode.create("PI", Math.PI));
+        assertEquals("Simplification should be (x + PI + 5)", "(x + PI + 5)", sum.toString());
     }
 }

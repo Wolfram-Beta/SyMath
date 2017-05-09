@@ -1,6 +1,5 @@
 package ca.wolfram.beta.symath.base;
 
-import ca.wolfram.beta.symath.Expression;
 import ca.wolfram.beta.symath.MathNode;
 
 /**
@@ -18,8 +17,8 @@ public class BaseNode {
         return new ConstantNode(i);
     }
 
-    public static MathNode create(String s, double value, Expression exp) {
-        return new MathConstantNode(s, value, exp);
+    public static MathNode create(String s, double value) {
+        return new MathConstantNode(s, value);
     }
 
     public static MathNode create(String s) {

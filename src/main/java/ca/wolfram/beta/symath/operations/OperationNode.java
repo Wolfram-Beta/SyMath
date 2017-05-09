@@ -1,8 +1,7 @@
 package ca.wolfram.beta.symath.operations;
 
-import ca.wolfram.beta.symath.Expression;
 import ca.wolfram.beta.symath.MathNode;
-import com.kotcrab.annotation.CallSuper;
+import ca.wolfram.beta.symath.VMap;
 
 import java.util.List;
 
@@ -27,16 +26,15 @@ public abstract class OperationNode implements MathNode {
     }
 
     @Override
-    public double eval(Expression.VMap variableMap) {
+    public double eval(VMap map) {
         if (children.isEmpty())
             throw new RuntimeException("This operation node has no children");
-        return operationEval(variableMap);
+        return operationEval(map);
     }
 
-    public abstract double operationEval(Expression.VMap variableMap);
+    public abstract double operationEval(VMap map);
 
     @Override
-    @CallSuper
     public boolean simplify() {
         for (MathNode n : children)
             isConstant &= n.isConstant();
