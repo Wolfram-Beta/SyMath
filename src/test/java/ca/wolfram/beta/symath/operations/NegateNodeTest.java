@@ -23,4 +23,10 @@ public class NegateNodeTest {
             assertEquals("NegateNode's factory should throw an error", "Negate Node only takes 1 node", ex.getMessage());
         }
     }
+
+	@Test
+    public void eval() {
+        MathNode negativeOne = NegateNode.create(BaseNode.create(1));
+        assertEquals(-1.0, negativeOne.eval(null), 0.001);
+    }
 }
