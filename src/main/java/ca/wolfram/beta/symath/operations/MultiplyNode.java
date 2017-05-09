@@ -23,6 +23,12 @@ public class MultiplyNode extends OperationNode{
     }
 
     @Override
+    public boolean simplify() {
+        // TODO
+        return super.simplify();
+    }
+
+    @Override
     public NodeType getType() {
         return NodeType.MULTIPLY;
     }
