@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class MathUtilsTest {
 
     @Test
-    public void isInt() {
+    public void isConstantInt() {
         assertTrue("3 is an int", MathUtils.isConstantInt(BaseNode.create(3)));
         assertTrue("2 is an int", MathUtils.isConstantInt(BaseNode.create("a", 2)));
         assertFalse("PI is not an int", MathUtils.isConstantInt(BaseNode.create("PI", Math.PI)));
