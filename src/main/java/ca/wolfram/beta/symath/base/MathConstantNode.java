@@ -1,6 +1,5 @@
 package ca.wolfram.beta.symath.base;
 
-import ca.wolfram.beta.symath.Expression;
 import ca.wolfram.beta.symath.MathNode;
 import ca.wolfram.beta.symath.NodeType;
 import ca.wolfram.beta.symath.VMap;
@@ -15,10 +14,15 @@ import java.util.List;
 public class MathConstantNode implements MathNode {
 
     private final String variable;
+    private final static VMap constantMap = new VMap();
+
+    MathConstantNode(String variable) {
+        this.variable = variable;
+    }
 
     MathConstantNode(String variable, double value) {
-        Expression.getConstantMap().put(variable, value);
-        this.variable = variable;
+        this(variable);
+        constantMap.put(variable, value);
     }
 
     @Override
@@ -43,7 +47,7 @@ public class MathConstantNode implements MathNode {
 
     @Override
     public double eval(VMap map) {
-        return map.get(variable, String.format("%s has not yet been defined in the constant map", variable));
+        return constantMap.get(variable, String.format("%s has not yet been defined in the constant map", variable));
     }
 
     @Override
