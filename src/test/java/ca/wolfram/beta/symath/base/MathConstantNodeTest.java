@@ -2,7 +2,6 @@ package ca.wolfram.beta.symath.base;
 
 import ca.wolfram.beta.symath.MathNode;
 import ca.wolfram.beta.symath.NodeType;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,12 +12,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class MathConstantNodeTest {
 
-    private MathNode pi;
-
-    @Before
-    public void init() {
-        pi = BaseNode.create("PI", Math.PI);
-    }
+    private static MathNode pi = BaseNode.create("PI", Math.PI);
 
     @Test
     public void string() {
