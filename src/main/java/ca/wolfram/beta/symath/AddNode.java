@@ -15,7 +15,7 @@ public class AddNode extends OperationNode {
     }
 
     public static MathNode create(MathNode... nodes) {
-        return new AddNode(new ArrayList<>(Arrays.asList(nodes)));
+        return create(new ArrayList<>(Arrays.asList(nodes)));
     }
 
     @Override
