@@ -1,5 +1,7 @@
-package ca.wolfram.beta.symath;
+package ca.wolfram.beta.symath.operations;
 
+import ca.wolfram.beta.symath.Expression;
+import ca.wolfram.beta.symath.MathNode;
 import com.kotcrab.annotation.CallSuper;
 
 import java.util.List;

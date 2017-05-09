@@ -1,4 +1,7 @@
-package ca.wolfram.beta.symath;
+package ca.wolfram.beta.symath.base;
+
+import ca.wolfram.beta.symath.Expression;
+import ca.wolfram.beta.symath.MathNode;
 
 /**
  * Created by Allan Wang on 2017-05-06.

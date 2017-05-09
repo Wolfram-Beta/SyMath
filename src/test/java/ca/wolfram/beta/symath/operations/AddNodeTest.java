@@ -1,8 +1,10 @@
-package ca.wolfram.beta.symath;
+package ca.wolfram.beta.symath.operations;
 
+import ca.wolfram.beta.symath.MathNode;
+import ca.wolfram.beta.symath.base.BaseNode;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Allan Wang on 2017-05-06.

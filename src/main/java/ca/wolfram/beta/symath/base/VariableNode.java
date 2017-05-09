@@ -1,4 +1,8 @@
-package ca.wolfram.beta.symath;
+package ca.wolfram.beta.symath.base;
+
+import ca.wolfram.beta.symath.Expression;
+import ca.wolfram.beta.symath.MathNode;
+import ca.wolfram.beta.symath.NodeType;
 
 import java.util.List;
 
