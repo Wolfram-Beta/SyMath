@@ -8,7 +8,7 @@ package ca.wolfram.beta.symath;
 public enum NodeType {
 
     CONSTANT(0), MATHCONSTANT(0), VARIABLE(0),
-    ADD(-1), NEGATE(1), POWER(2);
+    ADD(-1), NEGATE(1), POWER(2), MULTIPLY(-1);
 
     public final int argCount;
 
