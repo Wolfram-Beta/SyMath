@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Created by Allan Wang on 2017-05-06.
+ * <p>
+ * Node holding a math constant
  */
 public class MathConstantNode implements MathNode {
 

@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 /**
  * Created by Allan Wang on 2017-05-08.
+ * <p>
+ * Holds the root of a Math tree, as well as a value map of the variables & math constants
  */
 public class Expression {
 

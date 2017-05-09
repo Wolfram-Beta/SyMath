@@ -3,7 +3,7 @@ package ca.wolfram.beta.symath;
 /**
  * Created by Allan Wang on 2017-05-06.
  * <p>
- * [argCount] maximum number of arguments for type; -1 for inf
+ * {@link #argCount} maximum number of arguments for type; -1 for inf
  */
 public enum NodeType {
 
