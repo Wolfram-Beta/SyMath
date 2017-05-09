@@ -1,7 +1,6 @@
 package ca.wolfram.beta.symath;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Allan Wang on 2017-05-06.
@@ -9,11 +8,9 @@ import java.util.Map;
 public class VariableNode implements MathNode {
 
     private final String variable;
-    private final Map<String, Double> variableMap;
 
     VariableNode(String variable) {
         this.variable = variable;
-        this.variableMap = VariableMap.getMap();
     }
 
     @Override
@@ -32,8 +29,8 @@ public class VariableNode implements MathNode {
     }
 
     @Override
-    public double eval() {
-        return variableMap.containsKey(variable) ? variableMap.get(variable) : 0;
+    public double eval(Expression.VMap variableMap) {
+        return variableMap.get(variable, 0);
     }
 
     @Override

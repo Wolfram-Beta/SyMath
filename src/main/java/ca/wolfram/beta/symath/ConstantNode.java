@@ -29,7 +29,7 @@ public class ConstantNode implements MathNode {
     }
 
     @Override
-    public double eval() {
+    public double eval(Expression.VMap variableMap) {
         return (double) constant;
     }
 

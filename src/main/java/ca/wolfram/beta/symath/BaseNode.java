@@ -1,7 +1,5 @@
 package ca.wolfram.beta.symath;
 
-import java.util.Map;
-
 /**
  * Created by Allan Wang on 2017-05-06.
  * <p>
@@ -17,8 +15,8 @@ public class BaseNode {
         return new ConstantNode(i);
     }
 
-    public static MathNode create(String s, double value) {
-        return new MathConstantNode(s, value);
+    public static MathNode create(String s, double value, Expression exp) {
+        return new MathConstantNode(s, value, exp);
     }
 
     public static MathNode create(String s) {

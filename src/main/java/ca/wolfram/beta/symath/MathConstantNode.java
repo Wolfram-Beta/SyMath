@@ -1,7 +1,6 @@
 package ca.wolfram.beta.symath;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Allan Wang on 2017-05-06.
@@ -10,9 +9,9 @@ public class MathConstantNode implements MathNode {
 
     private final String variable;
 
-    MathConstantNode(String variable, double value) {
+    MathConstantNode(String variable, double value, Expression expression) {
+        expression.getMap().put(variable, value);
         this.variable = variable;
-        VariableMap.getMap().put(variable, value);
     }
 
     @Override
@@ -36,8 +35,8 @@ public class MathConstantNode implements MathNode {
     }
 
     @Override
-    public double eval() {
-        return VariableMap.getMap().get(variable, 0);
+    public double eval(Expression.VMap variableMap) {
+        return variableMap.get(variable, 0);
     }
 
     @Override

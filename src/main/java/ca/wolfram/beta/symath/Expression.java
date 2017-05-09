@@ -5,17 +5,13 @@ import java.util.HashMap;
 /**
  * Created by Allan Wang on 2017-05-08.
  */
-class VariableMap {
-
-    private static VariableMap sInstance = new VariableMap();
-
-    static VMap getMap() {
-        return sInstance.map;
-    }
+public class Expression {
 
     private final VMap map = new VMap();
+    private MathNode root;
 
-    private VariableMap() {
+    public VMap getMap() {
+        return map;
     }
 
     /**

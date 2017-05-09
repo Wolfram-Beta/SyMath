@@ -12,7 +12,7 @@ public interface MathNode {
 
     boolean isConstant();
 
-    double eval();
+    double eval(Expression.VMap variableMap);
 
     /**
      * Simplifies node & its children

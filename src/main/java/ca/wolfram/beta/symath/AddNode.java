@@ -31,10 +31,10 @@ public class AddNode extends OperationNode {
     }
 
     @Override
-    public double operationEval() {
+    public double operationEval(Expression.VMap variableMap) {
         return getChildren()
                 .stream()
-                .mapToDouble(MathNode::eval)
+                .mapToDouble((n) -> n.eval(variableMap))
                 .sum();
     }
 

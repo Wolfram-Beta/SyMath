@@ -6,11 +6,12 @@ import java.util.List;
 
 public abstract class OperationNode implements MathNode {
 
-    protected List<MathNode> children;
+    List<MathNode> children;
     private boolean isConstant = true;
 
-    public OperationNode(List<MathNode> children) {
+    OperationNode(List<MathNode> children) {
         this.children = children;
+        simplify();
     }
 
     @Override
@@ -24,13 +25,13 @@ public abstract class OperationNode implements MathNode {
     }
 
     @Override
-    public double eval() {
+    public double eval(Expression.VMap variableMap) {
         if (children.isEmpty())
             throw new RuntimeException("This operation node has no children");
-        return operationEval();
+        return operationEval(variableMap);
     }
 
-    public abstract double operationEval();
+    public abstract double operationEval(Expression.VMap variableMap);
 
     @Override
     @CallSuper
