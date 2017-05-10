@@ -44,11 +44,12 @@ public class VMapTest {
 
     @Test
     public void getWithError() {
+        String error = "var not defined";
         try {
-            map.get("a", "var not defined");
+            map.get("a", error);
             fail("a was not defined");
-        } catch (Exception e) {
-            //error caught
+        } catch (IllegalArgumentException e) {
+            assertEquals(String.format("VMap should throw %s", error), error, e.getMessage());
         }
     }
 }

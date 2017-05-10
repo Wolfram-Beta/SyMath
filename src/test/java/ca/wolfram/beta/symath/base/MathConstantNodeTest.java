@@ -26,7 +26,7 @@ public class MathConstantNodeTest {
 
     @Test
     public void type() {
-        assertEquals("PI is a MathConstant", NodeType.MATHCONSTANT, pi.getType());
+        assertEquals("PI is a MathConstant", NodeType.MATH_CONSTANT, pi.getType());
     }
 
     @Test
