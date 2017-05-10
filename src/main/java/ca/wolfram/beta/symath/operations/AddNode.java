@@ -35,6 +35,11 @@ public class AddNode extends OperationNode {
         return NodeType.ADD;
     }
 
+    /**
+     * Extracts all constant integers and appends it as one {@link ca.wolfram.beta.symath.base.ConstantNode} if the sum != 0
+     *
+     * @return true is isConstant, false otherwise
+     */
     @Override
     public boolean simplify() {
         long constant = 0;
@@ -46,7 +51,8 @@ public class AddNode extends OperationNode {
             constant += next.eval(null);
         }
         MathNode newConstant = BaseNode.create(constant);
-        getChildren().add(newConstant);
+        if (newConstant.eval(null) != 0)
+            getChildren().add(newConstant);
         return super.simplify();
     }
 
@@ -62,7 +68,18 @@ public class AddNode extends OperationNode {
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("(");
-        getChildren().forEach((c) -> s.append(c).append(" + "));
-        return s.substring(0, s.length() - 3) + ")";
+        boolean isFirst = true;
+        for (MathNode c : getChildren()) {
+            if (isFirst) {
+                s.append(c);
+                isFirst = false;
+                continue;
+            }
+            if (c.getType() == NodeType.NEGATE || (c.getType() == NodeType.CONSTANT) && c.eval(null) < 0)
+                s.append(" - ").append(c.toString().substring(1));
+            else
+                s.append(" + ").append(c);
+        }
+        return s.append(")").toString();
     }
 }
