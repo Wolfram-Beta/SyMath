@@ -13,8 +13,14 @@ public class AddNodeTest {
 
     @Test
     public void string() {
-        MathNode sum = AddNode.create(BaseNode.create("x"), BaseNode.create("y"),BaseNode.create(1));
+        MathNode sum = AddNode.create(BaseNode.create("x"), BaseNode.create("y"), BaseNode.create(1));
         assertEquals("Sum string should be concatenated values surrounded by brackets", "(x + y + 1)", sum.toString());
+    }
+
+    @Test
+    public void negativeString() {
+        assertEquals("(x + y - 1)", AddNode.create(BaseNode.create("x"), BaseNode.create("y"), BaseNode.create(-1)).toString());
+        assertEquals("(-x + y)", AddNode.create(NegateNode.create(BaseNode.create("x")), BaseNode.create("y")).toString());
     }
 
     @Test
