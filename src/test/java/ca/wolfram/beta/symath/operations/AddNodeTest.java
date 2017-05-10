@@ -28,4 +28,13 @@ public class AddNodeTest {
         MathNode sum = AddNode.create(BaseNode.create(2), BaseNode.create("x"), BaseNode.create(3), BaseNode.create("PI", Math.PI));
         assertEquals("Simplification should be (x + PI + 5)", "(x + PI + 5)", sum.toString());
     }
+
+    @Test
+    public void multiLayerSimplify() {
+        MathNode sum = AddNode.create(
+                BaseNode.create(3),
+                AddNode.create(BaseNode.create(3), BaseNode.create("y"),
+                        AddNode.create(BaseNode.create(3), BaseNode.create("x"))));
+        assertEquals("Simplification should be (y + x + 9)", "(y + x + 9)", sum.toString());
+    }
 }
