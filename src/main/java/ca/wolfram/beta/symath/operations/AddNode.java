@@ -35,23 +35,27 @@ public class AddNode extends OperationNode {
         return NodeType.ADD;
     }
 
-    /**
-     * Extracts all constant integers and appends it as one {@link ca.wolfram.beta.symath.base.ConstantNode} if the sum != 0
-     * Flattens children if they are also of type ADD
-     *
-     * @return true is isConstant, false otherwise
-     */
     @Override
     public boolean simplify() {
         long constant = simplify(0, 0);
         if (constant != 0)
-            children.add(BaseNode.create(constant));
+            getChildren().add(BaseNode.create(constant));
         return super.simplify();
     }
 
+    /**
+     * Helper method for simplification
+     * Starts the listIterator at index, with history of constant, and continues from there
+     * Extracts all constant integers and adds values to {@code constant}
+     * If child is of type ADD, add its respective children to the current children and recursively simplify at the new index
+     *
+     * @param index    children index to start iteration
+     * @param constant integer summation of child nodes before index
+     * @return new integer summation
+     */
     private int simplify(int index, int constant) {
-        List<MathNode> childrenToRaise = new ArrayList<>(); //children to be flattened to this node level
-        final ListIterator<MathNode> each = getChildren().listIterator(index); //start iteration and last checked index
+        List<MathNode> childrenToRaise = new ArrayList<>();
+        final ListIterator<MathNode> each = getChildren().listIterator(index);
         while (each.hasNext()) {
             MathNode next = each.next();
             if (next.getType() == NodeType.ADD) {
@@ -59,16 +63,17 @@ public class AddNode extends OperationNode {
                 each.remove();
                 continue;
             }
-            if (!next.isConstant() || !MathUtils.isConstantInt(next)) continue;
-            each.remove();
-            constant += next.eval(null);
+            if (MathUtils.isConstantInt(next)) {
+                each.remove();
+                constant += next.eval(null);
+            }
         }
         if (!childrenToRaise.isEmpty()) {
-            int last = children.size();
-            children.addAll(childrenToRaise);
-            return simplify(last, constant); //recurse and return total constant sum
+            int last = getChildren().size();
+            getChildren().addAll(childrenToRaise);
+            return simplify(last, constant);
         }
-        return constant; //done simplification; return sum
+        return constant;
     }
 
     @Override
@@ -86,14 +91,14 @@ public class AddNode extends OperationNode {
         boolean isFirst = true;
         for (MathNode c : getChildren()) {
             if (isFirst) {
-                s.append(c);
+                s.append(c.toString());
                 isFirst = false;
                 continue;
             }
-            if (c.getType() == NodeType.NEGATE || (c.getType() == NodeType.CONSTANT) && c.eval(null) < 0)
+            if ((c.getType() == NodeType.NEGATE) || (c.getType() == NodeType.CONSTANT) && c.eval(null) < 0)
                 s.append(" - ").append(c.toString().substring(1));
             else
-                s.append(" + ").append(c);
+                s.append(" + ").append(c.toString());
         }
         return s.append(")").toString();
     }

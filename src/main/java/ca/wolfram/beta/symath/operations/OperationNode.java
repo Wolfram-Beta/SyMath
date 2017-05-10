@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class OperationNode implements MathNode {
 
-    List<MathNode> children;
+    private List<MathNode> children;
     private boolean isConstant = true;
 
     OperationNode(List<MathNode> children) {
