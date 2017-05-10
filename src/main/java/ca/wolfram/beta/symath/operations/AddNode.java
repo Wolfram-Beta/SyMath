@@ -49,19 +49,28 @@ public class AddNode extends OperationNode {
         return super.simplify();
     }
 
+    /**
+     * Helper method to help with simplification
+     * Starts the listIterator at index, with history of constant, and continues from there
+     *
+     * @param index    children index to start iteration
+     * @param constant integer summation of child nodes before index
+     * @return new integer summation
+     */
     private int simplify(int index, int constant) {
         List<MathNode> childrenToRaise = new ArrayList<>(); //children to be flattened to this node level
-        final ListIterator<MathNode> each = getChildren().listIterator(index); //start iteration and last checked index
+        final ListIterator<MathNode> each = getChildren().listIterator(index);
         while (each.hasNext()) {
             MathNode next = each.next();
-            if (next.getType() == NodeType.ADD) {
+            if (next.getType() == NodeType.ADD) { //add children later and remove this node
                 childrenToRaise.addAll(next.getChildren());
                 each.remove();
                 continue;
             }
-            if (!next.isConstant() || !MathUtils.isConstantInt(next)) continue;
-            each.remove();
-            constant += next.eval(null);
+            if (MathUtils.isConstantInt(next)) {
+                each.remove();
+                constant += next.eval(null);
+            }
         }
         if (!childrenToRaise.isEmpty()) {
             int last = children.size();
