@@ -35,6 +35,11 @@ public class AddNode extends OperationNode {
         return NodeType.ADD;
     }
 
+    /**
+     * Extracts all constant integers and appends it as one {@link ca.wolfram.beta.symath.base.ConstantNode} if the sum != 0
+     *
+     * @return true is isConstant, false otherwise
+     */
     @Override
     public boolean simplify() {
         int constant = 0;
