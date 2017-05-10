@@ -1,12 +1,12 @@
 package ca.wolfram.beta.symath.operations;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
+import ca.wolfram.beta.symath.MathNode;
+import ca.wolfram.beta.symath.NodeType;
+import ca.wolfram.beta.symath.base.BaseNode;
 import org.junit.Test;
 
-import ca.wolfram.beta.symath.MathNode;
-import ca.wolfram.beta.symath.base.BaseNode;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class PowerNodeTest {
     @Test
@@ -20,8 +20,8 @@ public class PowerNodeTest {
         try {
             PowerNode.create(BaseNode.create(1), BaseNode.create("x"), BaseNode.create("y"));
             fail("Multi children error not caught");
-        } catch (RuntimeException ex) {
-            assertEquals("PowerNode's factory method should throw an error", "Power Node takes exactly 2 node", ex.getMessage());
+        } catch (IllegalArgumentException ex) {
+            assertEquals("PowerNode's factory method should throw an error", NodeType.POWER.getCountException(), ex.getMessage());
         }
     }
 

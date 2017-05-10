@@ -1,12 +1,12 @@
 package ca.wolfram.beta.symath.operations;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ca.wolfram.beta.symath.MathNode;
 import ca.wolfram.beta.symath.NodeType;
 import ca.wolfram.beta.symath.VMap;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PowerNode extends OperationNode{
 
@@ -19,7 +19,6 @@ public class PowerNode extends OperationNode{
      * @throws RuntimeException if number of nodes is incorrect.
      */
     public static MathNode create(List<MathNode> nodes) {
-        if (nodes.size() != 2) throw new RuntimeException("Power Node takes exactly 2 node");
         return new PowerNode(nodes);
     }
 

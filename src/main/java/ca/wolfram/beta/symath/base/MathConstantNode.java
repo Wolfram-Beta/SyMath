@@ -27,7 +27,7 @@ public class MathConstantNode implements MathNode {
 
     @Override
     public NodeType getType() {
-        return NodeType.MATHCONSTANT;
+        return NodeType.MATH_CONSTANT;
     }
 
     @Override

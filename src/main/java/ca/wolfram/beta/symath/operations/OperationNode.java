@@ -11,6 +11,7 @@ public abstract class OperationNode implements MathNode {
     private boolean isConstant = true;
 
     OperationNode(List<MathNode> children) {
+        getType().validateListSize(children);
         this.children = children;
         simplify();
     }

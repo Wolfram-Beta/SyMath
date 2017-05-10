@@ -20,12 +20,12 @@ public class NegateNodeTest {
         try {
             NegateNode.create(BaseNode.create(1), BaseNode.create("x"), BaseNode.create("y"));
             fail("Multi children error not caught");
-        } catch (RuntimeException ex) {
-            assertEquals("NegateNode's factory should throw an error", "Negate Node only takes 1 node", ex.getMessage());
+        } catch (IllegalArgumentException ex) {
+            assertEquals("NegateNode's factory should throw an error", NodeType.NEGATE.getCountException(), ex.getMessage());
         }
     }
 
-	@Test
+    @Test
     public void eval() {
         MathNode negativeOne = NegateNode.create(BaseNode.create(1));
         assertEquals(-1.0, negativeOne.eval(null), 0.001);
