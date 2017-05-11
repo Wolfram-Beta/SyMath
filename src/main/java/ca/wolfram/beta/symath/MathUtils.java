@@ -12,7 +12,7 @@ public class MathUtils {
     public static boolean isConstantInt(MathNode node) {
         if (!node.isConstant()) return false;
         double eval = node.eval(null);
-        return eval == (int) eval;
+        return eval == (long) eval;
     }
 
     public static void print(String s, Object... o) {

@@ -37,7 +37,7 @@ public class AddNode extends OperationNode {
 
     @Override
     public boolean simplify() {
-        int constant = 0;
+        long constant = 0;
         final Iterator<MathNode> each = getChildren().iterator();
         while (each.hasNext()) {
             MathNode next = each.next();

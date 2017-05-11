@@ -18,7 +18,7 @@ public class NegateNode extends OperationNode {
     public static MathNode create(List<MathNode> nodes) {
         if (nodes.size() > 1) throw new RuntimeException("Negate Node only takes 1 node");
         MathNode n = nodes.get(0);
-        if (n.getType() == NodeType.CONSTANT) return BaseNode.create((int) -n.eval(null));
+        if (n.getType() == NodeType.CONSTANT) return BaseNode.create((long) -n.eval(null));
         return new NegateNode(nodes);
     }
 
