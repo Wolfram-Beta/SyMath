@@ -10,10 +10,10 @@ import ca.wolfram.beta.symath.MathNode;
 public class BaseNode {
 
     public static MathNode
-            ZERO = create(0),
-            ONE = create(1);
+            ZERO = create(0L),
+            ONE = create(1L);
 
-    public static MathNode create(int i) {
+    public static MathNode create(long i) {
         return new ConstantNode(i);
     }
 

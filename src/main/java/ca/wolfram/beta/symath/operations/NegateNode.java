@@ -17,7 +17,7 @@ public class NegateNode extends OperationNode {
 
     public static MathNode create(List<MathNode> nodes) {
         MathNode n = nodes.get(0);
-        if (nodes.size() == 1 && n.getType() == NodeType.CONSTANT) return BaseNode.create((int) -n.eval(null));
+        if (nodes.size() == 1 && n.getType() == NodeType.CONSTANT) return BaseNode.create((long) -n.eval(null));
         return new NegateNode(nodes);
     }
 

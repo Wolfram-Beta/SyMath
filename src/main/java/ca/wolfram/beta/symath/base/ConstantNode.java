@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class ConstantNode implements MathNode {
 
-    private final int constant;
+    private final long constant;
 
-    ConstantNode(int constant) {
+    ConstantNode(long constant) {
         this.constant = constant;
     }
 
@@ -47,6 +47,6 @@ public class ConstantNode implements MathNode {
 
     @Override
     public String toString() {
-        return Integer.toString(constant);
+        return Long.toString(constant);
     }
 }
