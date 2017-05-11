@@ -71,9 +71,9 @@ public class AddNode extends OperationNode {
         if (!childrenToRaise.isEmpty()) {
             int last = getChildren().size();
             getChildren().addAll(childrenToRaise);
-            return simplify(last, constant); //recurse and return total constant sum
+            return simplify(last, constant);
         }
-        return constant; //done simplification; return sum
+        return constant;
     }
 
     @Override
