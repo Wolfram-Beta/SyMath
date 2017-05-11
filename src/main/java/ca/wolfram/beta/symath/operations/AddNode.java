@@ -35,12 +35,6 @@ public class AddNode extends OperationNode {
         return NodeType.ADD;
     }
 
-    /**
-     * Extracts all constant integers and appends it as one {@link ca.wolfram.beta.symath.base.ConstantNode} if the sum != 0
-     * Flattens children if they are also of type ADD
-     *
-     * @return true is isConstant, false otherwise
-     */
     @Override
     public boolean simplify() {
         int constant = simplify(0, 0);
@@ -50,8 +44,10 @@ public class AddNode extends OperationNode {
     }
 
     /**
-     * Helper method to help with simplification
+     * Helper method for simplification
      * Starts the listIterator at index, with history of constant, and continues from there
+     * Extracts all constant integers and adds values to {@code constant}
+     * If child is of type ADD, add its respective children to the current children and recursively simplify at the new index
      *
      * @param index    children index to start iteration
      * @param constant integer summation of child nodes before index
