@@ -38,7 +38,7 @@ public class AddNode extends OperationNode {
     @Override
     public boolean simplify() {
         long constant = simplify(0, 0L);
-        if (constant != 0)
+        if (constant != 0L)
             getChildren().add(BaseNode.create(constant));
         return super.simplify();
     }

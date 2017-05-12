@@ -15,6 +15,14 @@ public class MathUtils {
         return eval == (long) eval;
     }
 
+    public static boolean isConstantInt(MathNode node, long value) {
+        return isConstantInt(node) && node.eval(null) == value;
+    }
+
+    public static boolean isReciprocal(MathNode node) {
+        return node.getType() == NodeType.POWER && isConstantInt(node.getChildren().get(1), -1L);
+    }
+
     public static void print(String s, Object... o) {
         System.out.println(String.format(Locale.CANADA, s, o));
     }
