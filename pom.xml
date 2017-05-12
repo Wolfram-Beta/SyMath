@@ -33,6 +33,10 @@
                 <version>${antlr4.plugin.version}</version>
                 <configuration>
                     <arguments>
+                        <argument>-o</argument>
+                        <argument>${project.build.sourceDirectory}/ca/wolfram/beta/symath/parser</argument>
+                        <argument>-package</argument>
+                        <argument>ca.wolfram.beta.symath.parser</argument>
                         <argument>-Dlanguage=Java</argument>
                         <argument>-visitor</argument>
                     </arguments>
