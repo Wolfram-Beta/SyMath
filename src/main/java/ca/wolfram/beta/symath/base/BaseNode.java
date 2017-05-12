@@ -13,8 +13,8 @@ public class BaseNode {
             ZERO = create(0L),
             ONE = create(1L);
 
-    public static MathNode create(long i) {
-        return new ConstantNode(i);
+    public static MathNode create(long n) {
+        return new ConstantNode(n);
     }
 
     public static MathNode create(String s, double value) {
