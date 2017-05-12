@@ -54,7 +54,7 @@ public class MultiplyNode extends OperationNode {
                 continue;
             }
             if (MathUtils.isReciprocal(next)) {
-                double potential = constant / next.eval(null);
+                double potential = constant / next.getChildren().get(0).eval(null);  // reduce precision loss
                 if (potential == (long) potential) {
                     constant = (long) potential;  // next is division node and result is still an integer; merge
                     each.remove();

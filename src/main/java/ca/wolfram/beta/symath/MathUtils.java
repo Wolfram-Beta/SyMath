@@ -19,6 +19,14 @@ public class MathUtils {
         return isConstantInt(node) && node.eval(null) == value;
     }
 
+    public static boolean isZero(MathNode node) {
+        return isConstantInt(node, 0);
+    }
+
+    public static boolean isNegativeConstant(MathNode node) {
+        return node.isConstant() && (node.eval(null) < 0);
+    }
+
     public static boolean isReciprocal(MathNode node) {
         return node.getType() == NodeType.POWER && isConstantInt(node.getChildren().get(1), -1L);
     }
