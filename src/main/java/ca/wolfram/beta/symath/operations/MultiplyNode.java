@@ -96,16 +96,15 @@ public class MultiplyNode extends OperationNode {
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        s.append("(");
-        boolean isFirst = true;
-        for (MathNode c : getChildren()) {
-            if (isFirst) {
-                s.append(c.toString());
-                isFirst = false;
-                continue;
-            }
-            s.append(" * ").append(c.toString());
+        StringBuilder s = new StringBuilder().append("(");
+        ListIterator<MathNode> iter = getChildren().listIterator();
+        if (iter.hasNext()) s.append(iter.next().toString());
+        while (iter.hasNext()) {
+            MathNode c = iter.next();
+            if (MathUtils.isReciprocal(c))
+                s.append(" / ").append(c.getChildren().get(0).toString());
+            else
+                s.append(" * ").append(c.toString());
         }
         return s.append(")").toString();
     }
