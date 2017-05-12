@@ -26,13 +26,6 @@ public class MultiplyNodeTest {
     }
 
     @Test
-    public void division() {
-        MathNode multiply = MultiplyNode.create(BaseNode.create(6), DivideNode.create(2));
-        assertEquals("6 / 2 = 3", "(3)", multiply.toString());
-        assertEquals("6 / 2 = 3", 3, (int) multiply.eval(null));
-    }
-
-    @Test
     public void eval() {
         MathNode multiply = MultiplyNode.create(BaseNode.create(2), BaseNode.create(3));
         assertEquals(6.0, multiply.eval(null), 0.001);

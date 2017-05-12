@@ -18,10 +18,10 @@ public class NegateNodeTest {
     @Test
     public void multiChildrenError() {
         try {
-            NegateNode.create(BaseNode.create(1), BaseNode.create("x"), BaseNode.create("y"));
+            PowerNode.create(BaseNode.create(1), BaseNode.create("x"), BaseNode.create("y"));
             fail("Multi children error not caught");
         } catch (IllegalArgumentException ex) {
-            assertEquals("NegateNode's factory should throw an error", NodeType.NEGATE.getCountException(), ex.getMessage());
+            assertEquals("PowerNode's factory should throw an error", NodeType.POWER.getCountException(), ex.getMessage());
         }
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 public enum NodeType {
 
     CONSTANT(0), MATH_CONSTANT(0), VARIABLE(0),
-    ADD(-2), NEGATE(1), MULTIPLY(-2), POWER(2);
+    ADD(-2), SUBTRACT(-2), NEGATE(1), MULTIPLY(-2), DIVIDE(-2), POWER(2);
 
     public final int argCount;
 

@@ -17,6 +17,13 @@ public class MultiplyNode extends OperationNode {
         super(children);
     }
 
+    /**
+     * Links all child nodes with multiply operation
+     *
+     * @param nodes list of children
+     * @return resulting MathNode
+     * @throws IllegalArgumentException if nodes count < 2
+     */
     public static MathNode create(List<MathNode> nodes) {
         return new MultiplyNode(nodes);
     }
@@ -53,7 +60,7 @@ public class MultiplyNode extends OperationNode {
                 each.remove();
                 continue;
             }
-            if (MathUtils.isReciprocal(next)) {
+            if (MathUtils.isReciprocal(next) && MathUtils.isConstantInt(next.getChildren().get(0))) {
                 double potential = constant / next.getChildren().get(0).eval(null);  // reduce precision loss
                 if (potential == (long) potential) {
                     constant = (long) potential;  // next is division node and result is still an integer; merge

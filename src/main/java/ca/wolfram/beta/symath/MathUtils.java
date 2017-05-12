@@ -23,6 +23,10 @@ public class MathUtils {
         return isConstantInt(node, 0);
     }
 
+    public static boolean isOne(MathNode node) {
+        return isConstantInt(node, 1);
+    }
+
     public static boolean isNegativeConstant(MathNode node) {
         return node.isConstant() && (node.eval(null) < 0);
     }

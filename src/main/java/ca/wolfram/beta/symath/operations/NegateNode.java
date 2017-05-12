@@ -5,8 +5,7 @@ import ca.wolfram.beta.symath.NodeType;
 import ca.wolfram.beta.symath.VMap;
 import ca.wolfram.beta.symath.base.BaseNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class NegateNode extends OperationNode {
@@ -15,14 +14,15 @@ public class NegateNode extends OperationNode {
         super(children);
     }
 
-    public static MathNode create(List<MathNode> nodes) {
-        MathNode n = nodes.get(0);
-        if (nodes.size() == 1 && n.getType() == NodeType.CONSTANT) return BaseNode.create((long) -n.eval(null));
-        return new NegateNode(nodes);
-    }
-
-    public static MathNode create(MathNode... nodes) {
-        return create(new ArrayList<>(Arrays.asList(nodes)));
+    /**
+     * Takes a single node and wraps it with a negation
+     *
+     * @param node child
+     * @return resulting MathNode
+     */
+    public static MathNode create(MathNode node) {
+        if (node.getType() == NodeType.CONSTANT) return BaseNode.create((long) -node.eval(null));
+        return new NegateNode(Collections.singletonList(node));
     }
 
     @Override

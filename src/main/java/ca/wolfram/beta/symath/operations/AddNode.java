@@ -22,6 +22,13 @@ public class AddNode extends OperationNode {
         super(children);
     }
 
+    /**
+     * Links all children with add operations
+     *
+     * @param nodes list of children
+     * @return resulting MathNode
+     * @throws IllegalArgumentException if nodes count < 2
+     */
     public static MathNode create(List<MathNode> nodes) {
         return new AddNode(nodes);
     }
