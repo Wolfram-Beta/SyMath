@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PowerNode extends OperationNode{
 
-    PowerNode(List<MathNode> children) {
+    private PowerNode(List<MathNode> children) {
         super(children);
     }
 

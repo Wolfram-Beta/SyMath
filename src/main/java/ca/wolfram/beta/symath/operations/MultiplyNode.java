@@ -1,16 +1,16 @@
 package ca.wolfram.beta.symath.operations;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ca.wolfram.beta.symath.MathNode;
 import ca.wolfram.beta.symath.NodeType;
 import ca.wolfram.beta.symath.VMap;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MultiplyNode extends OperationNode{
 
-    MultiplyNode(List<MathNode> children) {
+    private MultiplyNode(List<MathNode> children) {
         super(children);
     }
 

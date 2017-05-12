@@ -37,7 +37,7 @@ public class AddNode extends OperationNode {
 
     @Override
     public boolean simplify() {
-        long constant = simplify(0, 0);
+        long constant = simplify(0, 0L);
         if (constant != 0)
             getChildren().add(BaseNode.create(constant));
         return super.simplify();
@@ -53,7 +53,7 @@ public class AddNode extends OperationNode {
      * @param constant integer summation of child nodes before index
      * @return new integer summation
      */
-    private int simplify(int index, int constant) {
+    private long simplify(int index, long constant) {
         List<MathNode> childrenToRaise = new ArrayList<>();
         final ListIterator<MathNode> each = getChildren().listIterator(index);
         while (each.hasNext()) {
