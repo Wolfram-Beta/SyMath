@@ -19,8 +19,6 @@ public class PowerNode extends OperationNode {
 
     /**
      * Index 0 is the base and Index 1 is the power.
-     *
-     * @throws IllegalArgumentException if number of nodes is incorrect.
      */
     public static MathNode create(List<MathNode> nodes) {
         return new PowerNode(nodes);

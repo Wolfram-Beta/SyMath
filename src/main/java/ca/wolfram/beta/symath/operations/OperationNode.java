@@ -10,6 +10,12 @@ public abstract class OperationNode implements MathNode {
     private List<MathNode> children;
     private boolean isConstant = true;
 
+    /**
+     * Base constructor for all operations
+     *
+     * @param children list of child nodes
+     * @throws IllegalArgumentException if child count doesn't match specified argCount for the {@link #getType()}
+     */
     OperationNode(List<MathNode> children) {
         getType().validateListSize(children);
         this.children = children;
@@ -29,7 +35,7 @@ public abstract class OperationNode implements MathNode {
     @Override
     public double eval(VMap map) {
         if (children.isEmpty())
-            throw new RuntimeException("This operation node has no children");
+            throw new IllegalArgumentException("This operation node has no children");
         return operationEval(map);
     }
 

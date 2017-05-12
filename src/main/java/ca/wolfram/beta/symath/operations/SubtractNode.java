@@ -14,11 +14,11 @@ public class SubtractNode {
     /**
      * Takes in a single node to subtract (minuend == 0)
      *
-     * @param nodes subtrahend
+     * @param node subtrahend
      * @return resulting node
      */
-    public static MathNode create(MathNode nodes) {
-        return AddNode.create(NegateNode.create(nodes));
+    public static MathNode create(MathNode node) {
+        return AddNode.create(NegateNode.create(node));
     }
 
     public static MathNode create(long value) {

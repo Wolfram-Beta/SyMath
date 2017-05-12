@@ -14,11 +14,11 @@ public class DivideNode {
     /**
      * Takes in a single node to divide by (dividend == 1)
      *
-     * @param nodes divisor
+     * @param node divisor
      * @return resulting node
      */
-    public static MathNode create(MathNode nodes) {
-        return PowerNode.create(nodes, BaseNode.create(-1));
+    public static MathNode create(MathNode node) {
+        return PowerNode.create(node, BaseNode.create(-1));
     }
 
     public static MathNode create(long value) {
