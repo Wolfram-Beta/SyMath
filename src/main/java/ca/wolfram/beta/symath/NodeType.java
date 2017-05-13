@@ -13,7 +13,7 @@ import java.util.List;
 public enum NodeType {
 
     CONSTANT(0), MATH_CONSTANT(0), VARIABLE(0),
-    ADD(-2), SUBTRACT(-2), NEGATE(1), MULTIPLY(-2), DIVIDE(-2), POWER(2);
+    ADD(-2), NEGATE(1), MULTIPLY(-2), POWER(2);
 
     public final int argCount;
 
@@ -22,8 +22,12 @@ public enum NodeType {
     }
 
     public void validateListSize(List<MathNode> list) {
-        if ((argCount >= 0 && list.size() != argCount) || (argCount < 0 && list.size() < -argCount))
-            throw new IllegalArgumentException(getCountException());
+        validateListSize(argCount, list, getCountException());
+    }
+
+    public static void validateListSize(int count, List<MathNode> list, String exception) {
+        if ((count >= 0 && list.size() != count) || (count < 0 && list.size() < -count))
+            throw new IllegalArgumentException(exception);
     }
 
     public String getCountException() {

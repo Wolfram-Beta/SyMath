@@ -26,7 +26,7 @@ public class DivideNode {
      * @throws IllegalArgumentException if nodes count < 2
      */
     public static MathNode create(List<MathNode> nodes) {
-        NodeType.DIVIDE.validateListSize(nodes);
+        NodeType.validateListSize(-2, nodes, "DivideNode should have at least 2 children");
         List<MathNode> toDivide = nodes.subList(1, nodes.size());
         MathNode divisor;
         if (toDivide.size() == 1) divisor = toDivide.get(0);

@@ -25,7 +25,7 @@ public class SubtractNode {
      * @throws IllegalArgumentException if nodes count < 2
      */
     public static MathNode create(List<MathNode> nodes) {
-        NodeType.SUBTRACT.validateListSize(nodes);
+        NodeType.validateListSize(-2, nodes, "SubtractNode should have at least 2 children");
         List<MathNode> toSubtract = nodes.subList(1, nodes.size());
         MathNode subtrahend;
         if (toSubtract.size() == 1) subtrahend = toSubtract.get(0);
