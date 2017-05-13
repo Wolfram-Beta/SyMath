@@ -41,12 +41,8 @@ public class NegateNode extends OperationNode {
     }
 
     @Override
-    void sort() {
-        // NegateNode only has one child and cannot be sorted
-    }
-
-    @Override
     String operationToString() {
         return String.format("-%s", getChildren().get(0).toString());
     }
+
 }

@@ -35,6 +35,10 @@ public class MathUtils {
         return node.getType() == NodeType.POWER && isConstantInt(node.getChildren().get(1), -1L);
     }
 
+    public static boolean childrenAllBase(MathNode node) {
+        return node.getChildren().parallelStream().allMatch(n -> n.getType().argCount == 0);
+    }
+
     public static void print(String s, Object... o) {
         System.out.println(String.format(Locale.CANADA, s, o));
     }

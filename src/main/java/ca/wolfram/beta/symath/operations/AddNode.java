@@ -6,10 +6,7 @@ import ca.wolfram.beta.symath.NodeType;
 import ca.wolfram.beta.symath.VMap;
 import ca.wolfram.beta.symath.base.BaseNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * Node that will sum all of its children
@@ -47,11 +44,6 @@ public class AddNode extends OperationNode {
         long constant = simplify(0, 0L);
         if (constant != 0L)
             getChildren().add(BaseNode.create(constant));
-    }
-
-    @Override
-    void sort() {
-        //TODO
     }
 
     /**
@@ -108,5 +100,19 @@ public class AddNode extends OperationNode {
                 s.append(" + ").append(c.toString());
         }
         return s.append(")").toString();
+    }
+
+    /**
+     * Comparison Order
+     * PowerNodes
+     * Ascending variableNode count in children
+     * Alphabetical comparison for VariableNodes
+     * Constants
+     *
+     * @return comparator
+     */
+    @Override
+    Comparator<MathNode> getComparator() {
+        return super.getComparator(); //TODO
     }
 }
