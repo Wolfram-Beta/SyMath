@@ -38,11 +38,6 @@ public class PowerNode extends OperationNode {
     }
 
     @Override
-    void sort() {
-        //TODO
-    }
-
-    @Override
     public NodeType getType() {
         return NodeType.POWER;
     }

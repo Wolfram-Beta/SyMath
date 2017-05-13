@@ -6,10 +6,7 @@ import ca.wolfram.beta.symath.NodeType;
 import ca.wolfram.beta.symath.VMap;
 import ca.wolfram.beta.symath.base.BaseNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MultiplyNode extends OperationNode {
 
@@ -37,11 +34,6 @@ public class MultiplyNode extends OperationNode {
         long constant = simplify(0, 1L);
         if (constant != 1L)
             getChildren().add(BaseNode.create(constant));
-    }
-
-    @Override
-    void sort() {
-        //TODO
     }
 
     /**
@@ -111,5 +103,19 @@ public class MultiplyNode extends OperationNode {
                 s.append(" * ").append(c.toString());
         }
         return s.append(")").toString();
+    }
+
+    /**
+     * Comparison Order
+     * Constants
+     * PowerNodes
+     * Ascending variableNode count in children
+     * Alphabetical comparison for VariableNodes
+     *
+     * @return comparator
+     */
+    @Override
+    Comparator<MathNode> getComparator() {
+        return super.getComparator(); //TODO
     }
 }

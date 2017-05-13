@@ -12,13 +12,19 @@ import java.util.List;
  */
 public enum NodeType {
 
-    CONSTANT(0), MATH_CONSTANT(0), VARIABLE(0),
-    ADD(-2), NEGATE(1), MULTIPLY(-2), POWER(2);
+    CONSTANT(0), MATH_CONSTANT(0), VARIABLE(0), // The order of the BaseNode types matter; change with caution (see OperationNode sorting)
+    ADD(-2, true), NEGATE(1), MULTIPLY(-2, true), POWER(2);
 
     public final int argCount;
+    public final boolean sortable;
 
     NodeType(int argCount) {
+        this(argCount, false);
+    }
+
+    NodeType(int argCount, boolean sortable) {
         this.argCount = argCount;
+        this.sortable = sortable;
     }
 
     public void validateListSize(List<MathNode> list) {
