@@ -9,7 +9,8 @@ import ca.wolfram.beta.symath.MathNode;
  */
 public class BaseNode {
 
-    public static MathNode
+    public static final MathNode
+            NEG_ONE = create(-1L),
             ZERO = create(0L),
             ONE = create(1L);
 

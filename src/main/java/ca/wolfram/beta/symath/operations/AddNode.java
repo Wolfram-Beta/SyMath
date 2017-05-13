@@ -22,6 +22,13 @@ public class AddNode extends OperationNode {
         super(children);
     }
 
+    /**
+     * Links all children with add operations
+     *
+     * @param nodes list of children
+     * @return resulting MathNode
+     * @throws IllegalArgumentException if nodes count < 2
+     */
     public static MathNode create(List<MathNode> nodes) {
         return new AddNode(nodes);
     }
@@ -38,7 +45,7 @@ public class AddNode extends OperationNode {
     @Override
     public boolean simplify() {
         long constant = simplify(0, 0L);
-        if (constant != 0)
+        if (constant != 0L)
             getChildren().add(BaseNode.create(constant));
         return super.simplify();
     }
@@ -55,16 +62,16 @@ public class AddNode extends OperationNode {
      */
     private long simplify(int index, long constant) {
         List<MathNode> childrenToRaise = new ArrayList<>();
-        final ListIterator<MathNode> each = getChildren().listIterator(index);
-        while (each.hasNext()) {
-            MathNode next = each.next();
+        final ListIterator<MathNode> iter = getChildren().listIterator(index);
+        while (iter.hasNext()) {
+            MathNode next = iter.next();
             if (next.getType() == NodeType.ADD) {
                 childrenToRaise.addAll(next.getChildren());
-                each.remove();
+                iter.remove();
                 continue;
             }
             if (MathUtils.isConstantInt(next)) {
-                each.remove();
+                iter.remove();
                 constant += next.eval(null);
             }
         }
@@ -86,16 +93,12 @@ public class AddNode extends OperationNode {
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        s.append("(");
-        boolean isFirst = true;
-        for (MathNode c : getChildren()) {
-            if (isFirst) {
-                s.append(c.toString());
-                isFirst = false;
-                continue;
-            }
-            if ((c.getType() == NodeType.NEGATE) || (c.getType() == NodeType.CONSTANT) && c.eval(null) < 0)
+        StringBuilder s = new StringBuilder().append("(");
+        ListIterator<MathNode> iter = getChildren().listIterator();
+        if (iter.hasNext()) s.append(iter.next().toString());
+        while (iter.hasNext()) {
+            MathNode c = iter.next();
+            if ((c.getType() == NodeType.NEGATE) || (c.getType() == NodeType.CONSTANT && c.eval(null) < 0))
                 s.append(" - ").append(c.toString().substring(1));
             else
                 s.append(" + ").append(c.toString());
