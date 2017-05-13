@@ -27,6 +27,11 @@ public class DivideNodeTest {
     public void complexString() {
         MathNode divide = DivideNode.create(BaseNode.create(1), AddNode.create(BaseNode.create("x"), BaseNode.create(2)));
         assertEquals("(1/(x + 2))", divide.toString());
+    }
+
+    @Test
+    public void type() {
+        MathNode divide = DivideNode.create(BaseNode.create(1), AddNode.create(BaseNode.create("x"), BaseNode.create(2)));
         assertEquals("Division should be of type Power", NodeType.POWER, divide.getType());
     }
 
