@@ -33,9 +33,13 @@ public class PowerNode extends OperationNode {
     }
 
     @Override
-    public boolean simplify() {
+    void operationSimplify() {
         //TODO
-        return super.simplify();
+    }
+
+    @Override
+    void sort() {
+        //TODO
     }
 
     @Override
@@ -44,12 +48,12 @@ public class PowerNode extends OperationNode {
     }
 
     @Override
-    public double operationEval(VMap map) {
+    double operationEval(VMap map) {
         return Math.pow(getChildren().get(0).eval(map), getChildren().get(1).eval(map));
     }
 
     @Override
-    public String toString() {
+    String operationToString() {
         if (MathUtils.isReciprocal(this)) return String.format("(1/%s)", getChildren().get(0).toString());
         return String.format("(%s ^ %s)", getChildren().get(0).toString(), getChildren().get(1).toString());
     }

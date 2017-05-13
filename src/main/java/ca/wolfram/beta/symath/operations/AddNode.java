@@ -43,11 +43,15 @@ public class AddNode extends OperationNode {
     }
 
     @Override
-    public boolean simplify() {
+    void operationSimplify() {
         long constant = simplify(0, 0L);
         if (constant != 0L)
             getChildren().add(BaseNode.create(constant));
-        return super.simplify();
+    }
+
+    @Override
+    void sort() {
+        //TODO
     }
 
     /**
@@ -84,7 +88,7 @@ public class AddNode extends OperationNode {
     }
 
     @Override
-    public double operationEval(VMap map) {
+    double operationEval(VMap map) {
         return getChildren()
                 .stream()
                 .mapToDouble((n) -> n.eval(map))
@@ -92,7 +96,7 @@ public class AddNode extends OperationNode {
     }
 
     @Override
-    public String toString() {
+    String operationToString() {
         StringBuilder s = new StringBuilder().append("(");
         ListIterator<MathNode> iter = getChildren().listIterator();
         if (iter.hasNext()) s.append(iter.next().toString());
