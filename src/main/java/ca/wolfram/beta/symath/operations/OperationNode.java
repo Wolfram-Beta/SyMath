@@ -23,28 +23,50 @@ public abstract class OperationNode implements MathNode {
     }
 
     @Override
-    public List<MathNode> getChildren() {
+    public final List<MathNode> getChildren() {
         return children;
     }
 
     @Override
-    public boolean isConstant() {
+    public final boolean isConstant() {
         return isConstant;
     }
 
     @Override
-    public double eval(VMap map) {
+    public final double eval(VMap map) {
         if (children.isEmpty())
             throw new IllegalArgumentException("This operation node has no children");
         return operationEval(map);
     }
 
-    public abstract double operationEval(VMap map);
+    abstract double operationEval(VMap map);
 
     @Override
-    public boolean simplify() {
-        for (MathNode n : children)
-            isConstant &= n.isConstant();
-        return isConstant;
+    public final boolean simplify() {
+        operationSimplify();
+        sort();
+        return isConstant = getChildren().stream().allMatch(MathNode::isConstant);
+    }
+
+    /**
+     * Simplify and flatten operation children
+     */
+    abstract void operationSimplify();
+
+    /**
+     * Sort operation children by defined conventions
+     */
+    abstract void sort();
+
+    /**
+     * Returns the String version of an Operation
+     *
+     * @return operation as a String
+     */
+    abstract String operationToString();
+
+    @Override
+    public final String toString() {
+        return operationToString();
     }
 }

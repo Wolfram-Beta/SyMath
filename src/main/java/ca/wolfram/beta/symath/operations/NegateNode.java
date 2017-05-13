@@ -31,12 +31,22 @@ public class NegateNode extends OperationNode {
     }
 
     @Override
-    public double operationEval(VMap map) {
+    double operationEval(VMap map) {
         return -getChildren().get(0).eval(map);
     }
 
     @Override
-    public String toString() {
+    void operationSimplify() {
+        //TODO is children contains operation node, expand it and bring the negation down?
+    }
+
+    @Override
+    void sort() {
+        // NegateNode only has one child and cannot be sorted
+    }
+
+    @Override
+    String operationToString() {
         return String.format("-%s", getChildren().get(0).toString());
     }
 }
