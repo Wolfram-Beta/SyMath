@@ -32,6 +32,7 @@ public class MathUtils {
             set = new HashSet<MathNode>();
             break;
         case VARIABLE:
+        case POWER:
             set = new HashSet<MathNode>();
             set.add(node);
             break;
