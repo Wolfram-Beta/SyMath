@@ -32,8 +32,8 @@ public class DivideNode {
         if (toDivide.size() == 1) divisor = toDivide.get(0);
         else divisor = MultiplyNode.create(toDivide);
         MathNode dividend = nodes.get(0);
-        if (MathUtils.isOne(dividend)) return PowerNode.create(divisor, BaseNode.create(-1));
-        return MultiplyNode.create(dividend, PowerNode.create(divisor, BaseNode.create(-1)));
+        if (MathUtils.isOne(dividend)) return PowerNode.create(divisor, BaseNode.NEG_ONE);
+        return MultiplyNode.create(dividend, PowerNode.create(divisor, BaseNode.NEG_ONE));
     }
 
     public static MathNode create(MathNode... nodes) {

@@ -60,7 +60,7 @@ public class MultiplyNode extends OperationNode {
                 each.remove();
                 continue;
             }
-            if (MathUtils.isReciprocal(next) && MathUtils.isConstantInt(next.getChildren().get(0))) {
+            if (MathUtils.isReciprocal(next) && MathUtils.isConstantInt(next.getChildren().get(0))) { // TODO test (note long/double) and move to MathUtils?
                 double potential = constant / next.getChildren().get(0).eval(null);  // reduce precision loss
                 if (potential == (long) potential) {
                     constant = (long) potential;  // next is division node and result is still an integer; merge
